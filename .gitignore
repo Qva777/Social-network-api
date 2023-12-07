@@ -87,3 +87,4 @@ local_settings.py
 
 backend/.env
 backend/db.sqlite3
+/bot/.env

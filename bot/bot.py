@@ -1,7 +1,10 @@
 import json
 import random
+import logging
 from rest_framework import status
 from services import UserService, PostService, AuthService
+
+logging.basicConfig(level=logging.INFO)
 
 
 def read_config(file_path):
@@ -35,7 +38,7 @@ def create_posts(user, max_posts_per_user):
     for _ in range(num_posts):
         response = PostService.create_post(user_token)
         if response.status_code == status.HTTP_201_CREATED:
-            print(f"{user} created a post")
+            logging.info(f"{user} created a post")
 
 
 def like_posts(user, max_likes_per_user):
@@ -50,9 +53,9 @@ def like_posts(user, max_likes_per_user):
         if post_id is not None:
             response = PostService.like_post(user_token, post_id)
             if response.status_code == status.HTTP_200_OK:
-                print(f"{user} liked post {post_id}")
+                logging.info(f"{user} liked post {post_id}")
         else:
-            print("No posts available to like.")
+            logging.info("No posts available to like.")
 
 
 def run_bot():
@@ -61,7 +64,7 @@ def run_bot():
     users = signup_users(config['number_of_users'])
 
     if not users:
-        print("Add new user in bot_config.json")
+        logging.info("Add new user in bot_config.json")
 
     for user in users:
         create_posts(user, config['max_posts_per_user'])

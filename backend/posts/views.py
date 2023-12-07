@@ -6,7 +6,6 @@ from rest_framework.permissions import IsAuthenticated
 
 from posts.serializers import PostSerializer
 from posts.repositories.repositories import PostRepository
-from posts.services.services import PostService
 
 
 class PostCreateView(APIView):
@@ -84,5 +83,5 @@ class LikesAnalyticsView(APIView):
         except ValueError:
             return Response({'error': 'Invalid date format. Use YYYY-MM-DD.'}, status=status.HTTP_400_BAD_REQUEST)
 
-        likes_analytics = PostService.get_likes_analytics(date_from, date_to)
+        likes_analytics = PostRepository.get_likes_analytics(date_from, date_to)
         return Response(likes_analytics, status=status.HTTP_200_OK)

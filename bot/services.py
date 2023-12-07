@@ -1,9 +1,11 @@
+import os
 import random
 import requests
 from rest_framework import status
+from dotenv import load_dotenv
 
-HOST = "http://localhost:8000"
-
+load_dotenv()
+HOST = os.getenv('HOST')
 
 class UserService:
     @staticmethod
