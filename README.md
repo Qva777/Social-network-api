@@ -51,6 +51,19 @@ python manage.py createsuperuser
   <summary><h2>🤖Automated bot(run docker before)</h2></summary>
 
 <h3>Set your data in bot config.json:</h3>
+<pre>
+{
+  "number_of_users": 15,
+  "max_posts_per_user": 3,
+  "max_likes_per_user": 10
+}
+</pre>
+
+<h3>Open remote docker bash:</h3>
+
+```
+docker run --rm bot_container bash 
+```
 
 <h3>Run Bot:</h3>
 

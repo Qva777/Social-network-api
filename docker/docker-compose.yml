@@ -40,5 +40,14 @@ services:
       - ../backend:/app
 
 
+  bot:
+    build:
+      context: ../bot
+      dockerfile: Dockerfile
+    container_name: bot_container
+    depends_on:
+      - postgres
+      - django
+
 volumes:
   postgres_data:

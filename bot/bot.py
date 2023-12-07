@@ -64,7 +64,7 @@ def run_bot():
     users = signup_users(config['number_of_users'])
 
     if not users:
-        logging.info("Add new user in bot_config.json")
+        logging.info("Add new user in bot_config.json {{number_of_users}}")
 
     for user in users:
         create_posts(user, config['max_posts_per_user'])

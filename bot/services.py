@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 HOST = os.getenv('HOST')
 
+
 class UserService:
     @staticmethod
     def signup_user(username, password):
@@ -22,7 +23,7 @@ class PostService:
     def get_random_post_id(user_token, excluded_posts):
         """ Get a random post ID"""
         headers = {"Authorization": f"Bearer {user_token}"}
-        posts_url = f"http://localhost:8000/api/posts/?limit=1&offset={random.randint(0, 10)}"
+        posts_url = f"{HOST}/api/posts/?limit=1&offset={random.randint(0, 10)}"
         response = requests.get(posts_url, headers=headers)
 
         if response.status_code == status.HTTP_200_OK and response.json():
